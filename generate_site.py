@@ -91,7 +91,7 @@ def render_index(modules: list[dict]) -> str:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{esc(COURSE)} — подробные презентации по каждой теме курса">
+  <meta name="description" content="{esc(COURSE)} — теория, практические кейсы и конспекты по искусственному интеллекту">
   <title>{esc(COURSE)}</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -123,7 +123,7 @@ def render_index(modules: list[dict]) -> str:
 def main() -> None:
     modules = parse_source()
     (ROOT / "index.html").write_text(render_index(modules), encoding="utf-8")
-    print(f"Готово: index.html с {sum(len(m['lectures']) for m in modules)} презентациями")
+    print(f"Готово: index.html с {sum(len(m['lectures']) for m in modules)} лекциями")
 
 
 if __name__ == "__main__":

@@ -192,7 +192,14 @@ footer { position: relative; z-index: 1; padding: 30px 0 45px; border-top: 1px s
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
 /* ---------- Lecture / presentation ---------- */
-.deck { max-width: 1040px; margin: 0 auto; padding: 34px clamp(20px, 5vw, 40px) 70px; }
+.deck { max-width: 1600px; margin: 0 auto; padding: 24px clamp(16px, 3vw, 40px) 48px; }
+.deck-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+.stage { min-width: 0; }
 .back-link { display: inline-flex; gap: 8px; align-items: center; color: var(--muted); font-size: 13px; }
 .back-link:hover { color: var(--accent); }
 .deck-head { margin: 22px 0 22px; }
@@ -213,9 +220,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 .slide {
   display: none;
-  min-height: 430px;
-  margin-top: 24px;
-  padding: clamp(28px, 5vw, 56px);
+  min-height: clamp(430px, calc(100vh - 230px), 760px);
+  margin-top: 14px;
+  padding: clamp(24px, 3vw, 44px);
   border: 1px solid var(--line);
   border-radius: 24px;
   background:
@@ -288,6 +295,95 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .counter { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; min-width: 62px; text-align: right; }
 .hint { margin-top: 10px; text-align: center; color: var(--muted); font-size: 12px; }
 
+/* ---------- Конспект рядом со слайдом ---------- */
+.notes-panel {
+  position: sticky;
+  top: 16px;
+  height: calc(100vh - 32px);
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(24, 36, 58, 0.96), rgba(14, 22, 38, 0.96));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.notes-head {
+  flex: 0 0 auto;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+.notes-kicker {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.notes-head h2 { margin: 6px 0 2px; font-size: 20px; letter-spacing: -0.02em; }
+.notes-head p { margin: 0; color: var(--muted); font-size: 12px; }
+.notes-body {
+  position: relative;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 4px 18px 26px;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 45%, transparent) transparent;
+}
+.notes-body::-webkit-scrollbar { width: 7px; }
+.notes-body::-webkit-scrollbar-thumb { border-radius: 99px; background: color-mix(in srgb, var(--accent) 45%, transparent); }
+.note-block {
+  padding: 16px 2px 18px;
+  border-bottom: 1px solid var(--line);
+  opacity: 0.72;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+.note-block:last-child { border-bottom: 0; }
+.note-block.active { opacity: 1; }
+.note-jump {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.note-jump:hover .note-title,
+.note-block.active .note-title { color: var(--accent); }
+.note-num {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.note-title { font-size: 14px; font-weight: 700; line-height: 1.3; transition: color 0.2s ease; }
+.note-summary {
+  margin: 8px 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.note-text p { margin: 0 0 10px; color: #dbe6f7; font-size: 14px; line-height: 1.62; }
+.note-text p:last-child { margin-bottom: 0; }
+
+@media (max-width: 1100px) {
+  .deck-layout { grid-template-columns: 1fr; }
+  .notes-panel { position: static; height: auto; min-height: 0; }
+  .notes-body { max-height: 62vh; }
+  .stage .slide { min-height: 420px; }
+}
+
 @media (max-width: 700px) {
   .module-head { flex-wrap: wrap; }
   .slide-list li { padding: 12px 14px; }
@@ -298,6 +394,25 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 @media print {
   body { background: #fff; color: #111; }
   .topbar, .controls, .hint, .progress, .site-bg, footer { display: none !important; }
-  .slide { display: block !important; page-break-after: always; box-shadow: none; background: #fff; color: #111; border: 1px solid #ccc; margin: 0 0 12px; }
+  .deck { max-width: none; padding: 0; }
+  .deck-layout { display: block; }
+  .stage .slide {
+    display: block !important;
+    min-height: 0;
+    page-break-after: always;
+    box-shadow: none;
+    background: #fff;
+    color: #111;
+    border: 1px solid #ccc;
+    margin: 0 0 12px;
+  }
   .slide h2, .slide-lead, .quote, .slide-list li { color: #111; }
+  .notes-panel { position: static; height: auto; min-height: 0; box-shadow: none; border: 0; background: #fff; }
+  .notes-head { background: #fff; border-bottom: 1px solid #ccc; }
+  .notes-head h2, .notes-kicker, .note-num, .note-title { color: #111 !important; }
+  .notes-head p, .note-summary { color: #444; }
+  .notes-body { overflow: visible; max-height: none; padding: 0; }
+  .note-block { opacity: 1; break-inside: avoid; }
+  .note-jump { cursor: default; }
+  .note-text p { color: #111; }
 }

@@ -11,6 +11,7 @@ from pathlib import Path
 
 from generate_presentations import AUTHOR, COURSE, build_slides, parse_source
 from generate_site import ACCENTS
+from lecture_notes import NOTES
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "lectures"
@@ -56,15 +57,44 @@ def render_slide(item: dict, index: int) -> str:
     kicker = esc(item.get("label", ""))
     state = "slide active" if index == 1 else "slide"
     return f"""      <section class="{state}" data-slide="{index}">
-        <div class="slide-kicker">{kicker}</div>
+         <div class="slide-kicker">{kicker}</div>
 {content}
       </section>"""
+
+
+def note_summary(item: dict) -> str:
+    if item.get("lead"):
+        return item["lead"]
+    if item.get("sub"):
+        return item["sub"]
+    if item.get("items"):
+        return item["items"][0]
+    return "Отправная точка слайда."
+
+
+def render_notes(number: int, slides: list[dict]) -> str:
+    sections = []
+    source = NOTES.get(number, [])
+    for i, item in enumerate(slides, 1):
+        raw = source[i - 1] if i - 1 < len(source) else ""
+        paragraphs = [p.strip() for p in raw.split("\n\n") if p.strip()]
+        body = "".join(f"<p>{esc(p)}</p>" for p in paragraphs)
+        sections.append(f"""        <section class="note-block" data-note="{i}">
+          <button class="note-jump" type="button" data-note-jump="{i}">
+            <span class="note-num">{i:02d}</span>
+            <span class="note-title">{esc(item['title'])}</span>
+          </button>
+          <p class="note-summary">{esc(note_summary(item))}</p>
+          <div class="note-text">{body}</div>
+        </section>""")
+    return "\n".join(sections)
 
 
 def render_page(lecture: dict, module: dict, slides: list[dict]) -> str:
     n = lecture["number"]
     color = ACCENTS[(module["number"] - 1) % len(ACCENTS)]
     slides_html = "\n".join(render_slide(item, i) for i, item in enumerate(slides, 1))
+    notes_html = render_notes(n, slides)
     return f"""<!doctype html>
 <html lang="ru">
 <head>
@@ -83,17 +113,31 @@ def render_page(lecture: dict, module: dict, slides: list[dict]) -> str:
       <h1>{esc(lecture['title'])}</h1>
       <p class="sub">{esc(COURSE)}</p>
     </div>
-    <div class="progress"><span class="progress-bar"></span></div>
-    <div class="deck-slides">
+    <div class="deck-layout">
+      <section class="stage" aria-label="Слайды лекции">
+        <div class="progress"><span class="progress-bar"></span></div>
+        <div class="deck-slides">
 {slides_html}
+        </div>
+        <div class="controls">
+          <button class="btn" type="button" data-prev><span aria-hidden="true">←</span> <span class="label">Назад</span></button>
+          <div class="dots" data-dots></div>
+          <span class="counter" data-counter>01 / {len(slides):02d}</span>
+          <button class="btn primary" type="button" data-next><span class="label">Далее</span> <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="hint">Листайте стрелками ← → или пробелом · конспект справа следует за слайдом</p>
+      </section>
+      <aside class="notes-panel" aria-label="Конспект лекции">
+        <div class="notes-head">
+          <span class="notes-kicker">Конспект лекции</span>
+          <h2>Лекция {n:02d}</h2>
+          <p>≈ 40 минут · ≈ 6 страниц A4</p>
+        </div>
+        <div class="notes-body" data-notes-body>
+{notes_html}
+        </div>
+      </aside>
     </div>
-    <div class="controls">
-      <button class="btn" type="button" data-prev><span aria-hidden="true">←</span> <span class="label">Назад</span></button>
-      <div class="dots" data-dots></div>
-      <span class="counter" data-counter>01 / {len(slides):02d}</span>
-      <button class="btn primary" type="button" data-next><span class="label">Далее</span> <span aria-hidden="true">→</span></button>
-    </div>
-    <p class="hint">Листайте стрелками ← → или пробелом · печать выведет все слайды</p>
   </main>
   <footer>
     <div class="wrap">

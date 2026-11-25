@@ -7,6 +7,8 @@
   const prev = document.querySelector('[data-prev]');
   const next = document.querySelector('[data-next]');
   const dotsHost = document.querySelector('[data-dots]');
+  const notesBody = document.querySelector('[data-notes-body]');
+  const noteBlocks = Array.from(document.querySelectorAll('.note-block'));
   let current = 0;
 
   slides.forEach((_, i) => {
@@ -19,6 +21,20 @@
   });
   const dots = Array.from(dotsHost.children);
 
+  function syncNotes(index) {
+    noteBlocks.forEach((block, i) => block.classList.toggle('active', i === index));
+    const active = noteBlocks[index];
+    if (!active || !notesBody) return;
+    const top = Math.max(0, active.offsetTop - 12);
+    if (notesBody.scrollHeight > notesBody.clientHeight + 20) {
+      try {
+        notesBody.scrollTo({ top: top, behavior: 'smooth' });
+      } catch (e) {
+        notesBody.scrollTop = top;
+      }
+    }
+  }
+
   function go(index) {
     current = Math.max(0, Math.min(slides.length - 1, index));
     slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
@@ -28,12 +44,23 @@
     if (prev) prev.disabled = current === 0;
     if (next) next.disabled = current === slides.length - 1;
     if (location.hash !== '#slide-' + (current + 1)) history.replaceState(null, '', '#slide-' + (current + 1));
+    syncNotes(current);
   }
 
   if (prev) prev.addEventListener('click', () => go(current - 1));
   if (next) next.addEventListener('click', () => go(current + 1));
 
+  document.querySelectorAll('[data-note-jump]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = parseInt(button.getAttribute('data-note-jump'), 10) - 1;
+      if (Number.isFinite(target)) go(target);
+    });
+  });
+
   document.addEventListener('keydown', (event) => {
+    const active = document.activeElement;
+    if (active && active.closest && active.closest('.notes-body')) return;
+
     if (['ArrowRight', 'PageDown', ' '].includes(event.key)) {
       if (event.target && event.target.tagName === 'BUTTON' && event.key === ' ') return;
       event.preventDefault();
