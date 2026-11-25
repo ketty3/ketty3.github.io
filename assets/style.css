@@ -190,7 +190,6 @@ main { position: relative; z-index: 1; }
 
 /* ---------- Литература и источники ---------- */
 .references { padding-bottom: 80px; scroll-margin-top: 90px; }
-.references-lead { margin: -12px 0 24px; color: var(--muted); font-size: 14px; }
 .reference-list {
   margin: 0;
   padding-left: 20px;
@@ -438,7 +437,6 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .note-block { opacity: 1; break-inside: avoid; }
   .note-jump { cursor: default; }
   .note-text p { color: #111; }
-  .references-lead { color: #444; }
   .reference-list { columns: 1; color: #111; }
   .reference-list a, .reference-list a::after { color: #111; }
 }

@@ -11,7 +11,7 @@ import re
 from pathlib import Path
 
 from generate_presentations import DETAILS
-from sources import SOURCE_URLS, TEACHER_SOURCES
+from sources import ADDITIONAL_SOURCES, SOURCE_URLS
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / "data" / "plan-lectures.txt"
@@ -63,11 +63,13 @@ def teaser(bullets: list[str]) -> str:
 
 
 def render_references() -> str:
+    known = dict(SOURCE_URLS)
+    known.update({title: url for title, url in ADDITIONAL_SOURCES})
     entries: dict[str, tuple[str, str]] = {}
     missing = []
     for data in DETAILS.values():
         for ref in data.get("refs", []):
-            url = SOURCE_URLS.get(ref)
+            url = known.get(ref)
             if not url:
                 missing.append(ref)
                 continue
@@ -75,7 +77,7 @@ def render_references() -> str:
     if missing:
         raise RuntimeError("Не заданы ссылки на источники: " + "; ".join(missing))
 
-    for title, url in TEACHER_SOURCES:
+    for title, url in ADDITIONAL_SOURCES:
         entries.setdefault(url.rstrip("/").lower(), (title, url))
 
     items = [
@@ -86,7 +88,6 @@ def render_references() -> str:
       <div class="section-head">
         <h2>Литература и источники</h2>
       </div>
-      <p class="references-lead">Источники, использованные при подготовке курса, и материалы с сайта преподавателя. Ссылки открываются в новой вкладке.</p>
       <ul class="reference-list">
 {chr(10).join(items)}
       </ul>
@@ -135,7 +136,7 @@ def render_index(modules: list[dict]) -> str:
     <section class="hero">
       <h1>Искусственный интеллект<br><em>в профессиональной деятельности</em></h1>
       <p class="subtitle">Салина Анна гр. МЭЭ2501</p>
-      <p class="hero-lead">От стратегии внедрения и данных до LLM, ИИ-агентов и целевой архитектуры компании.</p>
+      <p class="hero-lead">От подготовки данных и классических моделей до нейросетей, ИИ-агентов и итогового проекта.</p>
     </section>
     <section class="modules">
       <div class="section-head">
