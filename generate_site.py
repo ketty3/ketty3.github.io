@@ -10,6 +10,9 @@ import html
 import re
 from pathlib import Path
 
+from generate_presentations import DETAILS
+from sources import SOURCE_URLS
+
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / "data" / "plan-lectures.txt"
 COURSE = "Искусственный интеллект в профессиональной деятельности"
@@ -57,6 +60,47 @@ def teaser(bullets: list[str]) -> str:
     if ":" in base:
         base = base.split(":", 1)[0]
     return base.strip().rstrip(".")
+
+
+def render_references(modules: list[dict]) -> str:
+    items = []
+    missing = []
+    for module in modules:
+        for lecture in module["lectures"]:
+            number = lecture["number"]
+            refs = DETAILS.get(number, {}).get("refs", [])
+            links = []
+            for ref in refs:
+                url = SOURCE_URLS.get(ref)
+                if not url:
+                    missing.append((number, ref))
+                    continue
+                links.append(
+                    f'<li><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">{esc(ref)}</a></li>'
+                )
+            if not links:
+                continue
+            items.append(
+                f"""      <article class="reference-item">
+        <span class="reference-num">{number:02d}</span>
+        <div>
+          <h3>Лекция {number:02d}. {esc(lecture['title'])}</h3>
+          <ul>{''.join(links)}</ul>
+        </div>
+      </article>"""
+            )
+    if missing:
+        detail = "; ".join(f"{n}: {ref}" for n, ref in missing)
+        raise RuntimeError(f"Не заданы ссылки на источники: {detail}")
+    return f"""    <section class="references" id="literature">
+      <div class="section-head">
+        <h2>Литература и источники</h2>
+      </div>
+      <p class="references-lead">Источники, использованные при подготовке материалов курса. Ссылки открываются в новой вкладке.</p>
+      <div class="reference-grid">
+{chr(10).join(items)}
+      </div>
+    </section>"""
 
 
 def render_index(modules: list[dict]) -> str:
@@ -109,6 +153,7 @@ def render_index(modules: list[dict]) -> str:
       </div>
 {chr(10).join(blocks)}
     </section>
+{render_references(modules)}
   </main>
   <footer>
     <div class="wrap">

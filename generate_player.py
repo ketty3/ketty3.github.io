@@ -131,7 +131,6 @@ def render_page(lecture: dict, module: dict, slides: list[dict]) -> str:
         <div class="notes-head">
           <span class="notes-kicker">Конспект лекции</span>
           <h2>Лекция {n:02d}</h2>
-          <p>≈ 40 минут · ≈ 6 страниц A4</p>
         </div>
         <div class="notes-body" data-notes-body>
 {notes_html}
