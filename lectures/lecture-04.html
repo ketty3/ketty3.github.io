@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Жизненный цикл ИИ-проекта и методология MLOps — Искусственный интеллект в профессиональной деятельности">
+  <title>Лекция 04. Жизненный цикл ИИ-проекта и методология MLOps</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="site-bg"></div>
+  <main class="deck" style="--accent: #6f9cff;">
+    <a class="back-link" href="../index.html#module-1">← К программе курса</a>
+    <div class="deck-head">
+      <div class="chips"><span class="chip">Модуль 1</span><span class="chip">Лекция 04</span></div>
+      <h1>Жизненный цикл ИИ-проекта и методология MLOps</h1>
+      <p class="sub">Искусственный интеллект в профессиональной деятельности</p>
+    </div>
+    <div class="progress"><span class="progress-bar"></span></div>
+    <div class="deck-slides">
+      <section class="slide active" data-slide="1">
+        <div class="slide-kicker"></div>
+        <div class="big-number">04</div>
+        <h2>Жизненный цикл ИИ-проекта и методология MLOps</h2>
+        <p class="slide-lead">Лекция 04 · Модуль 1 · Искусственный интеллект в профессиональной деятельности</p>
+        <p class="cover-author">Салина Анна гр. МЭЭ2501</p>
+      </section>
+      <section class="slide" data-slide="2">
+        <div class="slide-kicker">После лекции вы сможете</div>
+        <h2>Цели и результаты лекции</h2>
+        <p class="slide-lead">Понять жизненный цикл ИИ-проекта и роль MLOps в переводе прототипа в стабильную эксплуатацию.</p>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Описывать этапы от бизнес-идеи до продакшена</span></li><li><span class="li-num">•</span><span class="li-text">Различать роли команды ИИ</span></li><li><span class="li-num">•</span><span class="li-text">Объяснять необходимость MLOps</span></li></ul>
+      </section>
+      <section class="slide" data-slide="3">
+        <div class="slide-kicker">Контекст</div>
+        <h2>Почему тема важна</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">PoC (подтверждение принципиальной возможности) отвечает на вопрос, можно ли реализовать решение в принципе. Промышленная эксплуатация показывает, что оно работает ежедневно, предсказуемо и в рамках бюджета.</span></li><li><span class="li-num">•</span><span class="li-text">Разрыв между этими состояниями — самая частая причина провала ИИ-инициатив: модель есть, а сервиса нет.</span></li><li><span class="li-num">•</span><span class="li-text">MLOps переносит практики совместной разработки и эксплуатации (DevOps) на модели: версионирование, автоматические тесты, релизы и мониторинг.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="4">
+        <div class="slide-kicker">Блок 1</div>
+        <h2>Теория · От бизнес-идеи к минимально жизнеспособному продукту (MVP) и промышленной эксплуатации</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Этапы: гипотеза → проверка доступности данных → PoC → MVP (минимально жизнеспособный продукт) → пилот → промышленная эксплуатация.</span></li><li><span class="li-num">•</span><span class="li-text">PoC отвечает на вопрос «можно ли», MVP — на вопрос «нужно ли и будет ли пользоваться».</span></li><li><span class="li-num">•</span><span class="li-text">Критерии выхода из этапа фиксируются заранее: метрика качества, бизнес-эффект и готовность инфраструктуры.</span></li><li><span class="li-num">•</span><span class="li-text">Переход в продакшен требует владельца сервиса, соглашения об уровне обслуживания (SLA) и плана отката.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="5">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 1</h2>
+        <p class="slide-lead">Остановка проекта на этапе PoC — нормальное решение, если гипотеза не подтвердилась.</p>
+      </section>
+      <section class="slide" data-slide="6">
+        <div class="slide-kicker">Блок 2</div>
+        <h2>Теория · Роли в команде</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Специалист по данным (Data Scientist) исследует данные и строит модель; инженер данных (Data Engineer) обеспечивает конвейеры.</span></li><li><span class="li-num">•</span><span class="li-text">Инженер машинного обучения (ML Engineer) доводит модель до сервиса: API, контейнеры, мониторинг и автоматизация.</span></li><li><span class="li-num">•</span><span class="li-text">Владелец продукта (Product Owner) отвечает за ценность и приоритеты; аналитик данных (Data Analyst) — за метрики и интерпретацию эффекта.</span></li><li><span class="li-num">•</span><span class="li-text">Бизнес-информатик связывает предметную область (домен), данные и архитектуру, снижая риск «модель ради модели».</span></li></ul>
+      </section>
+      <section class="slide" data-slide="7">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 2</h2>
+        <p class="slide-lead">Отсутствие ML Engineer в команде почти всегда означает, что прототип останется ноутбуком.</p>
+      </section>
+      <section class="slide" data-slide="8">
+        <div class="slide-kicker">Блок 3</div>
+        <h2>Теория · Введение в MLOps</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">MLOps = практики разработки + управление жизненным циклом модели и данных.</span></li><li><span class="li-num">•</span><span class="li-text">Непрерывный мониторинг фиксирует деградацию качества из-за изменения данных или поведения клиентов.</span></li><li><span class="li-num">•</span><span class="li-text">Автоматический перезапуск обучения запускается по триггерам: дрейф, падение метрики, новые данные.</span></li><li><span class="li-num">•</span><span class="li-text">Регистр моделей хранит версии, параметры, метрики и статус «утверждено/отклонено».</span></li></ul>
+      </section>
+      <section class="slide" data-slide="9">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 3</h2>
+        <p class="slide-lead">Мониторинг начинают проектировать вместе с моделью, а не после инцидента.</p>
+      </section>
+      <section class="slide" data-slide="10">
+        <div class="slide-kicker">Разбор кейса</div>
+        <h2>Кейс: перевод модели скоринга в эксплуатацию</h2>
+        <ul class="slide-list"><li><span class="li-num">01</span><span class="li-text">Зафиксировать метрику качества и бизнес-порог срабатывания.</span></li><li><span class="li-num">02</span><span class="li-text">Упаковать модель в API с версией и журналом предсказаний.</span></li><li><span class="li-num">03</span><span class="li-text">Настроить мониторинг дрейфа и правила отката к предыдущей версии.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="11">
+        <div class="slide-kicker">Что чаще всего идёт не так</div>
+        <h2>Типичные ошибки и риски</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">PoC на выборочных данных, не отражающих реальный поток.</span></li><li><span class="li-num">•</span><span class="li-text">Отсутствие журнала предсказаний — невозможно разобрать жалобу пользователя.</span></li><li><span class="li-num">•</span><span class="li-text">Релиз модели без сравнения с базовой версией.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="12">
+        <div class="slide-kicker">Как измерить эффект</div>
+        <h2>Метрики и критерии оценки</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Время от идеи до первого продакшен-релиза.</span></li><li><span class="li-num">•</span><span class="li-text">Доля релизов с автоматическими тестами качества.</span></li><li><span class="li-num">•</span><span class="li-text">Время обнаружения деградации модели.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="13">
+        <div class="slide-kicker">Практический инструментарий</div>
+        <h2>Инструменты и стек</h2>
+        <div class="slide-bottom"><div class="chips"><span class="chip">MLflow</span><span class="chip">Docker / Kubernetes</span><span class="chip">конвейеры непрерывной интеграции и доставки (CI/CD)</span><span class="chip">Evidently AI</span></div></div>
+      </section>
+      <section class="slide" data-slide="14">
+        <div class="slide-kicker">Три главных вывода</div>
+        <h2>Итоги лекции</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Остановка проекта на этапе PoC — нормальное решение, если гипотеза не подтвердилась.</span></li><li><span class="li-num">•</span><span class="li-text">Отсутствие ML Engineer в команде почти всегда означает, что прототип останется ноутбуком.</span></li><li><span class="li-num">•</span><span class="li-text">Мониторинг начинают проектировать вместе с моделью, а не после инцидента.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="15">
+        <div class="slide-kicker">Для обсуждения и самостоятельного изучения</div>
+        <h2>Вопросы и источники</h2>
+        <div class="question"><b>Для обсуждения</b><p>Кто в вашей организации отвечает за качество модели после того, как она запущена?</p></div>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Sculley D. et al. Hidden Technical Debt in Machine Learning Systems</span></li><li><span class="li-num">•</span><span class="li-text">Google: MLOps Continuous Delivery and Automation Pipelines</span></li></ul>
+      </section>
+    </div>
+    <div class="controls">
+      <button class="btn" type="button" data-prev><span aria-hidden="true">←</span> <span class="label">Назад</span></button>
+      <div class="dots" data-dots></div>
+      <span class="counter" data-counter>01 / 15</span>
+      <button class="btn primary" type="button" data-next><span class="label">Далее</span> <span aria-hidden="true">→</span></button>
+    </div>
+    <p class="hint">Листайте стрелками ← → или пробелом · печать выведет все слайды</p>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Искусственный интеллект в профессиональной деятельности</span>
+    </div>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

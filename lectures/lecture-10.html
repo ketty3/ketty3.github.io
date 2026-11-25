@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Большие языковые модели (LLM) как корпоративный стандарт — Искусственный интеллект в профессиональной деятельности">
+  <title>Лекция 10. Большие языковые модели (LLM) как корпоративный стандарт</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="site-bg"></div>
+  <main class="deck" style="--accent: #ffb454;">
+    <a class="back-link" href="../index.html#module-3">← К программе курса</a>
+    <div class="deck-head">
+      <div class="chips"><span class="chip">Модуль 3</span><span class="chip">Лекция 10</span></div>
+      <h1>Большие языковые модели (LLM) как корпоративный стандарт</h1>
+      <p class="sub">Искусственный интеллект в профессиональной деятельности</p>
+    </div>
+    <div class="progress"><span class="progress-bar"></span></div>
+    <div class="deck-slides">
+      <section class="slide active" data-slide="1">
+        <div class="slide-kicker"></div>
+        <div class="big-number">10</div>
+        <h2>Большие языковые модели (LLM) как корпоративный стандарт</h2>
+        <p class="slide-lead">Лекция 10 · Модуль 3 · Искусственный интеллект в профессиональной деятельности</p>
+        <p class="cover-author">Салина Анна гр. МЭЭ2501</p>
+      </section>
+      <section class="slide" data-slide="2">
+        <div class="slide-kicker">После лекции вы сможете</div>
+        <h2>Цели и результаты лекции</h2>
+        <p class="slide-lead">Понять устройство больших языковых моделей и практику инженерии запросов (промпт-инжиниринга) и генерации с дополнением по поиску (RAG) для корпоративных задач.</p>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Объяснять концепцию трансформера</span></li><li><span class="li-num">•</span><span class="li-text">Писать эффективные запросы (промпты)</span></li><li><span class="li-num">•</span><span class="li-text">Проектировать архитектуру RAG (генерации с дополнением по поиску)</span></li></ul>
+      </section>
+      <section class="slide" data-slide="3">
+        <div class="slide-kicker">Контекст</div>
+        <h2>Почему тема важна</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">LLM стала новым интерфейсом к данным и знаниям компании: пользователь формулирует задачу на естественном языке, а модель формирует результат.</span></li><li><span class="li-num">•</span><span class="li-text">Модель не является базой знаний: она генерирует вероятностный ответ, поэтому требуются внешний источник и проверка.</span></li><li><span class="li-num">•</span><span class="li-text">Для бизнес-информатика ключевой вопрос — как встроить LLM в контур, сохранив управляемость и воспроизводимость.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="4">
+        <div class="slide-kicker">Блок 1</div>
+        <h2>Теория · Как устроены трансформеры и LLM</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Трансформер — архитектура на основе механизма внимания: каждый токен (минимальная единица текста) учитывает значимость остальных токенов.</span></li><li><span class="li-num">•</span><span class="li-text">Обучение: предсказание следующего токена на большом корпусе формирует языковые и предметные зависимости.</span></li><li><span class="li-num">•</span><span class="li-text">Контекстное окно ограничивает объём информации за один вызов; длинные документы требуют фрагментации (chunking).</span></li><li><span class="li-num">•</span><span class="li-text">Модель не «знает» компанию: корпоративные знания подключаются через запрос (промпт), RAG или тонкую настройку модели.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="5">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 1</h2>
+        <p class="slide-lead">Для бизнес-задач важнее управляемый вывод (JSON, таблица), чем красивый текст.</p>
+      </section>
+      <section class="slide" data-slide="6">
+        <div class="slide-kicker">Блок 2</div>
+        <h2>Теория · Промпт-инжиниринг (Prompt Engineering) для решения бизнес-задач</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Хороший запрос (промпт) содержит роль, задачу, контекст, формат и критерий качества.</span></li><li><span class="li-num">•</span><span class="li-text">Примеры в запросе (few-shot) повышают предсказуемость формата ответа.</span></li><li><span class="li-num">•</span><span class="li-text">Цепочка рассуждений помогает в аналитических задачах, но требует проверки фактов.</span></li><li><span class="li-num">•</span><span class="li-text">Промпты нужно версионировать и тестировать на качественных наборах примеров — это такой же код.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="7">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 2</h2>
+        <p class="slide-lead">Без тестового набора промптов невозможно заметить регрессию после смены модели.</p>
+      </section>
+      <section class="slide" data-slide="8">
+        <div class="slide-kicker">Блок 3</div>
+        <h2>Теория · Архитектура RAG</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">RAG = поиск релевантных фрагментов + генерация ответа по найденному контексту.</span></li><li><span class="li-num">•</span><span class="li-text">Качество RAG зависит от разбиения документов, качества векторных представлений (embeddings) и настроек поиска.</span></li><li><span class="li-num">•</span><span class="li-text">Обязательна ссылка на источник: пользователь должен проверить утверждение.</span></li><li><span class="li-num">•</span><span class="li-text">RAG дешевле и безопаснее тонкой настройки (Fine-Tuning), если знания часто меняются.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="9">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 3</h2>
+        <p class="slide-lead">RAG начинается с чистоты документов и метаданных, а не с выбора модели.</p>
+      </section>
+      <section class="slide" data-slide="10">
+        <div class="slide-kicker">Разбор кейса</div>
+        <h2>Кейс: ассистент по регламентам</h2>
+        <ul class="slide-list"><li><span class="li-num">01</span><span class="li-text">Подготовить базу регламентов с метаданными и версиями.</span></li><li><span class="li-num">02</span><span class="li-text">Настроить поиск по фрагментам и шаблон ответа со ссылками.</span></li><li><span class="li-num">03</span><span class="li-text">Оценить точность на тестовых вопросах и долю ответов с источником.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="11">
+        <div class="slide-kicker">Что чаще всего идёт не так</div>
+        <h2>Типичные ошибки и риски</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Ожидание, что модель знает внутренние документы без подключения источников.</span></li><li><span class="li-num">•</span><span class="li-text">Отсутствие ссылок на источник в ответе.</span></li><li><span class="li-num">•</span><span class="li-text">Промпты, хранящиеся «в голове» у одного сотрудника.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="12">
+        <div class="slide-kicker">Как измерить эффект</div>
+        <h2>Метрики и критерии оценки</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Точность ответа по тестовому набору</span></li><li><span class="li-num">•</span><span class="li-text">Доля ответов со ссылкой</span></li><li><span class="li-num">•</span><span class="li-text">Стоимость на запрос</span></li></ul>
+      </section>
+      <section class="slide" data-slide="13">
+        <div class="slide-kicker">Практический инструментарий</div>
+        <h2>Инструменты и стек</h2>
+        <div class="slide-bottom"><div class="chips"><span class="chip">OpenAI / локальные LLM</span><span class="chip">LangChain / LlamaIndex</span><span class="chip">Векторная база данных (Vector DB)</span><span class="chip">Реестр запросов (Prompt registry)</span></div></div>
+      </section>
+      <section class="slide" data-slide="14">
+        <div class="slide-kicker">Три главных вывода</div>
+        <h2>Итоги лекции</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Для бизнес-задач важнее управляемый вывод (JSON, таблица), чем красивый текст.</span></li><li><span class="li-num">•</span><span class="li-text">Без тестового набора промптов невозможно заметить регрессию после смены модели.</span></li><li><span class="li-num">•</span><span class="li-text">RAG начинается с чистоты документов и метаданных, а не с выбора модели.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="15">
+        <div class="slide-kicker">Для обсуждения и самостоятельного изучения</div>
+        <h2>Вопросы и источники</h2>
+        <div class="question"><b>Для обсуждения</b><p>Какой внутренний документ вы бы подключили к RAG в первую очередь и почему?</p></div>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Vaswani A. et al. Attention Is All You Need</span></li><li><span class="li-num">•</span><span class="li-text">Lewis P. et al. Retrieval-Augmented Generation</span></li></ul>
+      </section>
+    </div>
+    <div class="controls">
+      <button class="btn" type="button" data-prev><span aria-hidden="true">←</span> <span class="label">Назад</span></button>
+      <div class="dots" data-dots></div>
+      <span class="counter" data-counter>01 / 15</span>
+      <button class="btn primary" type="button" data-next><span class="label">Далее</span> <span aria-hidden="true">→</span></button>
+    </div>
+    <p class="hint">Листайте стрелками ← → или пробелом · печать выведет все слайды</p>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Искусственный интеллект в профессиональной деятельности</span>
+    </div>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

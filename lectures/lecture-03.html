@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Данные как фундамент ИИ: архитектура и управление (Data Governance) — Искусственный интеллект в профессиональной деятельности">
+  <title>Лекция 03. Данные как фундамент ИИ: архитектура и управление (Data Governance)</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="site-bg"></div>
+  <main class="deck" style="--accent: #6f9cff;">
+    <a class="back-link" href="../index.html#module-1">← К программе курса</a>
+    <div class="deck-head">
+      <div class="chips"><span class="chip">Модуль 1</span><span class="chip">Лекция 03</span></div>
+      <h1>Данные как фундамент ИИ: архитектура и управление (Data Governance)</h1>
+      <p class="sub">Искусственный интеллект в профессиональной деятельности</p>
+    </div>
+    <div class="progress"><span class="progress-bar"></span></div>
+    <div class="deck-slides">
+      <section class="slide active" data-slide="1">
+        <div class="slide-kicker"></div>
+        <div class="big-number">03</div>
+        <h2>Данные как фундамент ИИ: архитектура и управление (Data Governance)</h2>
+        <p class="slide-lead">Лекция 03 · Модуль 1 · Искусственный интеллект в профессиональной деятельности</p>
+        <p class="cover-author">Салина Анна гр. МЭЭ2501</p>
+      </section>
+      <section class="slide" data-slide="2">
+        <div class="slide-kicker">После лекции вы сможете</div>
+        <h2>Цели и результаты лекции</h2>
+        <p class="slide-lead">Понять, как архитектура данных и управление данными определяют качество и жизнеспособность ИИ-решений.</p>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Описывать управление данными (Data Governance) в контексте ИИ</span></li><li><span class="li-num">•</span><span class="li-text">Сравнивать озеро-хранилище (Data Lakehouse) и доменную архитектуру данных (Data Mesh)</span></li><li><span class="li-num">•</span><span class="li-text">Проектировать конвейер обработки данных (Data Pipeline) для модели</span></li></ul>
+      </section>
+      <section class="slide" data-slide="3">
+        <div class="slide-kicker">Контекст</div>
+        <h2>Почему тема важна</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Модель обучается на том, что ей дали. Поэтому качество ИИ-системы на 80% определяется качеством и управляемостью данных, а не выбором алгоритма.</span></li><li><span class="li-num">•</span><span class="li-text">Бизнес-информатик отвечает за смысловую согласованность: одинаковое ли понятие «активный клиент» в CRM, хранилище и модели.</span></li><li><span class="li-num">•</span><span class="li-text">Современные архитектуры данных создаются не ради «красивого стека», а ради воспроизводимости и скорости доставки данных в модели.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="4">
+        <div class="slide-kicker">Блок 1</div>
+        <h2>Теория · Почему данные — новая нефть: качество, разметка и синтез</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">«Данные — новая нефть» (Data is the new oil) означает не ценность самого сырья, а ценность переработанных и очищенных данных.</span></li><li><span class="li-num">•</span><span class="li-text">Качество: полнота, актуальность, согласованность, уникальность и валидность форматов.</span></li><li><span class="li-num">•</span><span class="li-text">Разметка — отдельный процесс: нужны инструкции, контроль согласованности разметки исполнителями (аннотаторами) и версии наборов данных.</span></li><li><span class="li-num">•</span><span class="li-text">Синтез данных помогает при дефиците редких классов, но требует контроля реалистичности и этики.</span></li><li><span class="li-num">•</span><span class="li-text">Происхождение данных (data lineage) обязательно: нужно знать, откуда пришло значение в признак модели.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="5">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 1</h2>
+        <p class="slide-lead">Перед обучением всегда проводите аудит данных — он экономит недели работы.</p>
+      </section>
+      <section class="slide" data-slide="6">
+        <div class="slide-kicker">Блок 2</div>
+        <h2>Теория · Современный стек данных</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Data Lakehouse (озеро-хранилище) объединяет дешёвое хранение озера данных (Data Lake) и структуру таблиц с транзакционностью (свойства ACID: атомарность, согласованность, изолированность, долговечность).</span></li><li><span class="li-num">•</span><span class="li-text">Data Mesh (доменная архитектура данных) переносит ответственность за данные к бизнес-доменам (предметным областям): домен — владелец, данные — продукт (Data as a Product).</span></li><li><span class="li-num">•</span><span class="li-text">Контракты данных описывают схемы, семантику и соглашения об уровне обслуживания (SLA); они снижают конфликты между командами.</span></li><li><span class="li-num">•</span><span class="li-text">Для ИИ важны оба подхода: единая платформа хранения и чёткая ответственность доменов.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="7">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 2</h2>
+        <p class="slide-lead">Начинайте с одного домена и контракта данных, не пытаясь сразу построить «идеальную платформу».</p>
+      </section>
+      <section class="slide" data-slide="8">
+        <div class="slide-kicker">Блок 3</div>
+        <h2>Теория · Проектирование конвейеров обработки данных (Data Pipelines) для ML-систем</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Конвейер обработки данных: источники → приём → очистка → трансформация → признаки → обучение → мониторинг.</span></li><li><span class="li-num">•</span><span class="li-text">Признаки (features) должны переиспользоваться между обучением и продакшеном, иначе возникает расхождение между обучением и эксплуатацией (training-serving skew).</span></li><li><span class="li-num">•</span><span class="li-text">Версионирование данных и признаков позволяет воспроизвести результат модели.</span></li><li><span class="li-num">•</span><span class="li-text">Автоматические проверки качества на каждом этапе дешевле, чем расследование ошибок после запуска.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="9">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 3</h2>
+        <p class="slide-lead">Рассматривайте конвейер как продукт с версией, владельцем и документацией.</p>
+      </section>
+      <section class="slide" data-slide="10">
+        <div class="slide-kicker">Разбор кейса</div>
+        <h2>Кейс: признак для прогноза оттока</h2>
+        <ul class="slide-list"><li><span class="li-num">01</span><span class="li-text">Определить источники: CRM, биллинг (выставление счетов), логи продукта.</span></li><li><span class="li-num">02</span><span class="li-text">Согласовать определение «активен» и сроки обновления признака.</span></li><li><span class="li-num">03</span><span class="li-text">Построить конвейер с проверкой качества и журналом версий.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="11">
+        <div class="slide-kicker">Что чаще всего идёт не так</div>
+        <h2>Типичные ошибки и риски</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Обучение на «грязной» истории без проверки дублей и выбросов.</span></li><li><span class="li-num">•</span><span class="li-text">Разные определения признака в обучении и в работе сервиса.</span></li><li><span class="li-num">•</span><span class="li-text">Отсутствие владельца набора данных.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="12">
+        <div class="slide-kicker">Как измерить эффект</div>
+        <h2>Метрики и критерии оценки</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Процент записей, прошедших проверки качества.</span></li><li><span class="li-num">•</span><span class="li-text">Время доставки свежих данных в модель.</span></li><li><span class="li-num">•</span><span class="li-text">Количество воспроизведённых инцидентов по журналу происхождения данных.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="13">
+        <div class="slide-kicker">Практический инструментарий</div>
+        <h2>Инструменты и стек</h2>
+        <div class="slide-bottom"><div class="chips"><span class="chip">Great Expectations</span><span class="chip">dbt</span><span class="chip">Apache Airflow</span><span class="chip">Feast — хранилище признаков (feature store)</span></div></div>
+      </section>
+      <section class="slide" data-slide="14">
+        <div class="slide-kicker">Три главных вывода</div>
+        <h2>Итоги лекции</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Перед обучением всегда проводите аудит данных — он экономит недели работы.</span></li><li><span class="li-num">•</span><span class="li-text">Начинайте с одного домена и контракта данных, не пытаясь сразу построить «идеальную платформу».</span></li><li><span class="li-num">•</span><span class="li-text">Рассматривайте конвейер как продукт с версией, владельцем и документацией.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="15">
+        <div class="slide-kicker">Для обсуждения и самостоятельного изучения</div>
+        <h2>Вопросы и источники</h2>
+        <div class="question"><b>Для обсуждения</b><p>Какой признак в вашем процессе опаснее всего начать использовать без проверки происхождения?</p></div>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Kleppmann M. Designing Data-Intensive Applications</span></li><li><span class="li-num">•</span><span class="li-text">Dehghani Z. Data Mesh</span></li></ul>
+      </section>
+    </div>
+    <div class="controls">
+      <button class="btn" type="button" data-prev><span aria-hidden="true">←</span> <span class="label">Назад</span></button>
+      <div class="dots" data-dots></div>
+      <span class="counter" data-counter>01 / 15</span>
+      <button class="btn primary" type="button" data-next><span class="label">Далее</span> <span aria-hidden="true">→</span></button>
+    </div>
+    <p class="hint">Листайте стрелками ← → или пробелом · печать выведет все слайды</p>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Искусственный интеллект в профессиональной деятельности</span>
+    </div>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

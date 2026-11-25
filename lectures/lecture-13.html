@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ИИ-агенты (AI Agents) и мультиагентные системы в бизнесе — Искусственный интеллект в профессиональной деятельности">
+  <title>Лекция 13. ИИ-агенты (AI Agents) и мультиагентные системы в бизнесе</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="site-bg"></div>
+  <main class="deck" style="--accent: #ff7ba8;">
+    <a class="back-link" href="../index.html#module-4">← К программе курса</a>
+    <div class="deck-head">
+      <div class="chips"><span class="chip">Модуль 4</span><span class="chip">Лекция 13</span></div>
+      <h1>ИИ-агенты (AI Agents) и мультиагентные системы в бизнесе</h1>
+      <p class="sub">Искусственный интеллект в профессиональной деятельности</p>
+    </div>
+    <div class="progress"><span class="progress-bar"></span></div>
+    <div class="deck-slides">
+      <section class="slide active" data-slide="1">
+        <div class="slide-kicker"></div>
+        <div class="big-number">13</div>
+        <h2>ИИ-агенты (AI Agents) и мультиагентные системы в бизнесе</h2>
+        <p class="slide-lead">Лекция 13 · Модуль 4 · Искусственный интеллект в профессиональной деятельности</p>
+        <p class="cover-author">Салина Анна гр. МЭЭ2501</p>
+      </section>
+      <section class="slide" data-slide="2">
+        <div class="slide-kicker">После лекции вы сможете</div>
+        <h2>Цели и результаты лекции</h2>
+        <p class="slide-lead">Разобрать концепцию автономных ИИ-агентов и мультиагентных систем и границы их применения в бизнесе.</p>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Описывать архитектуру агента</span></li><li><span class="li-num">•</span><span class="li-text">Понимать Chain-of-Thought и ReAct</span></li><li><span class="li-num">•</span><span class="li-text">Оценивать риски автономности</span></li></ul>
+      </section>
+      <section class="slide" data-slide="3">
+        <div class="slide-kicker">Контекст</div>
+        <h2>Почему тема важна</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Агент — это модель с памятью, инструментами и циклом принятия решений. В отличие от чат-бота, он не только отвечает, но и действует.</span></li><li><span class="li-num">•</span><span class="li-text">Мультиагентные системы распределяют задачу между несколькими специализированными агентами, имитируя команду.</span></li><li><span class="li-num">•</span><span class="li-text">Для бизнес-информатика важно предусматривать человеческий контроль (human-in-the-loop) и аудит действий агента, иначе автономность становится риском.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="4">
+        <div class="slide-kicker">Блок 1</div>
+        <h2>Теория · Концепция автономных ИИ-агентов</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Агент получает цель, разбивает её на шаги и выбирает действие из доступных инструментов.</span></li><li><span class="li-num">•</span><span class="li-text">Память бывает краткосрочной (текущий диалог) и долгосрочной (база знаний и история действий).</span></li><li><span class="li-num">•</span><span class="li-text">Инструменты — API, поиск, базы данных и расчёты; каждый инструмент имеет ограничения прав доступа.</span></li><li><span class="li-num">•</span><span class="li-text">Чем больше шагов агент выполняет без участия человека, тем выше его автономность и тем жёстче должен быть контроль.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="5">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 1</h2>
+        <p class="slide-lead">Начинайте с одного агента с узким набором инструментов.</p>
+      </section>
+      <section class="slide" data-slide="6">
+        <div class="slide-kicker">Блок 2</div>
+        <h2>Теория · Проектирование цепочек рассуждений</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Chain-of-Thought (цепочка рассуждений, см. лекцию 10) — явные промежуточные шаги рассуждения перед ответом.</span></li><li><span class="li-num">•</span><span class="li-text">ReAct чередует рассуждение и действие: рассуждение → вызов инструмента → наблюдение → следующий шаг.</span></li><li><span class="li-num">•</span><span class="li-text">Планирование может быть статическим или адаптивным; адаптивное устойчивее к изменениям.</span></li><li><span class="li-num">•</span><span class="li-text">Рассуждение нужно проверять: красивая цепочка не гарантирует правильный результат.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="7">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 2</h2>
+        <p class="slide-lead">Каждый вызов инструмента должен быть записан в журнал с аргументами.</p>
+      </section>
+      <section class="slide" data-slide="8">
+        <div class="slide-kicker">Блок 3</div>
+        <h2>Теория · Как мультиагентные системы заменяют или дополняют целые отделы</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Мультиагентная система назначает роли: исследователь, критик, исполнитель, контролёр.</span></li><li><span class="li-num">•</span><span class="li-text">Подбор персонала (рекрутинг), маркетинг и написание простого кода — типовые сферы для таких систем.</span></li><li><span class="li-num">•</span><span class="li-text">Выигрыш достигается за счёт параллельности и специализации, но растёт стоимость вызовов.</span></li><li><span class="li-num">•</span><span class="li-text">Обязательны журнал решений и возможность остановить агента.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="9">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 3</h2>
+        <p class="slide-lead">Мультиагентность оправдана только там, где роли действительно различны.</p>
+      </section>
+      <section class="slide" data-slide="10">
+        <div class="slide-kicker">Разбор кейса</div>
+        <h2>Кейс: агент для подготовки отчёта</h2>
+        <ul class="slide-list"><li><span class="li-num">01</span><span class="li-text">Определить роль агента и список разрешённых API.</span></li><li><span class="li-num">02</span><span class="li-text">Описать шаги: собрать данные → посчитать → сравнить → сформировать текст.</span></li><li><span class="li-num">03</span><span class="li-text">Добавить проверку человеком перед публикацией отчёта.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="11">
+        <div class="slide-kicker">Что чаще всего идёт не так</div>
+        <h2>Типичные ошибки и риски</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Слишком широкие права агента на бизнес-системы.</span></li><li><span class="li-num">•</span><span class="li-text">Отсутствие бюджета на количество вызовов модели.</span></li><li><span class="li-num">•</span><span class="li-text">Доверие к цепочке рассуждений без проверки результата.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="12">
+        <div class="slide-kicker">Как измерить эффект</div>
+        <h2>Метрики и критерии оценки</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Доля задач, завершённых без человека</span></li><li><span class="li-num">•</span><span class="li-text">Стоимость на задачу</span></li><li><span class="li-num">•</span><span class="li-text">Количество ошибочных действий</span></li></ul>
+      </section>
+      <section class="slide" data-slide="13">
+        <div class="slide-kicker">Практический инструментарий</div>
+        <h2>Инструменты и стек</h2>
+        <div class="slide-bottom"><div class="chips"><span class="chip">LangGraph</span><span class="chip">AutoGen</span><span class="chip">Вызов инструментов и функций (tool/function calling)</span><span class="chip">Журналирование трассировок (trace logging)</span></div></div>
+      </section>
+      <section class="slide" data-slide="14">
+        <div class="slide-kicker">Три главных вывода</div>
+        <h2>Итоги лекции</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Начинайте с одного агента с узким набором инструментов.</span></li><li><span class="li-num">•</span><span class="li-text">Каждый вызов инструмента должен быть записан в журнал с аргументами.</span></li><li><span class="li-num">•</span><span class="li-text">Мультиагентность оправдана только там, где роли действительно различны.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="15">
+        <div class="slide-kicker">Для обсуждения и самостоятельного изучения</div>
+        <h2>Вопросы и источники</h2>
+        <div class="question"><b>Для обсуждения</b><p>Какую задачу вы доверите агенту полностью, а какую — только под контролем человека?</p></div>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Yao S. et al. ReAct: Synergizing Reasoning and Acting</span></li><li><span class="li-num">•</span><span class="li-text">OpenAI: Practical guide to building agents</span></li></ul>
+      </section>
+    </div>
+    <div class="controls">
+      <button class="btn" type="button" data-prev><span aria-hidden="true">←</span> <span class="label">Назад</span></button>
+      <div class="dots" data-dots></div>
+      <span class="counter" data-counter>01 / 15</span>
+      <button class="btn primary" type="button" data-next><span class="label">Далее</span> <span aria-hidden="true">→</span></button>
+    </div>
+    <p class="hint">Листайте стрелками ← → или пробелом · печать выведет все слайды</p>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Искусственный интеллект в профессиональной деятельности</span>
+    </div>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

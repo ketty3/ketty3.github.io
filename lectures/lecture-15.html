@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Объяснимый ИИ (XAI) и принятие управленческих решений — Искусственный интеллект в профессиональной деятельности">
+  <title>Лекция 15. Объяснимый ИИ (XAI) и принятие управленческих решений</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="site-bg"></div>
+  <main class="deck" style="--accent: #ff7ba8;">
+    <a class="back-link" href="../index.html#module-4">← К программе курса</a>
+    <div class="deck-head">
+      <div class="chips"><span class="chip">Модуль 4</span><span class="chip">Лекция 15</span></div>
+      <h1>Объяснимый ИИ (XAI) и принятие управленческих решений</h1>
+      <p class="sub">Искусственный интеллект в профессиональной деятельности</p>
+    </div>
+    <div class="progress"><span class="progress-bar"></span></div>
+    <div class="deck-slides">
+      <section class="slide active" data-slide="1">
+        <div class="slide-kicker"></div>
+        <div class="big-number">15</div>
+        <h2>Объяснимый ИИ (XAI) и принятие управленческих решений</h2>
+        <p class="slide-lead">Лекция 15 · Модуль 4 · Искусственный интеллект в профессиональной деятельности</p>
+        <p class="cover-author">Салина Анна гр. МЭЭ2501</p>
+      </section>
+      <section class="slide" data-slide="2">
+        <div class="slide-kicker">После лекции вы сможете</div>
+        <h2>Цели и результаты лекции</h2>
+        <p class="slide-lead">Изучить методы объяснимого ИИ и практику аргументации решений, принятых с участием моделей перед менеджментом и регуляторами.</p>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Объяснять проблему чёрного ящика</span></li><li><span class="li-num">•</span><span class="li-text">Применять SHAP и LIME</span></li><li><span class="li-num">•</span><span class="li-text">Формировать доказательную базу для решений</span></li></ul>
+      </section>
+      <section class="slide" data-slide="3">
+        <div class="slide-kicker">Контекст</div>
+        <h2>Почему тема важна</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Чем сложнее модель, тем труднее объяснить конкретный результат. Однако управленческое решение требует понимания, почему дана рекомендация.</span></li><li><span class="li-num">•</span><span class="li-text">Объяснимость — это не только этика: это требование регулируемых отраслей и условие доверия пользователей.</span></li><li><span class="li-num">•</span><span class="li-text">Бизнес-информатик переводит техническое объяснение в язык бизнес-аргументов и рисков.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="4">
+        <div class="slide-kicker">Блок 1</div>
+        <h2>Теория · Проблема «чёрного ящика» в глубоком обучении</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">«Чёрный ящик» — ситуация, когда вход и выход модели известны, а внутренняя логика непрозрачна.</span></li><li><span class="li-num">•</span><span class="li-text">Глубокие сети и ансамбли особенно сложны для прямой интерпретации.</span></li><li><span class="li-num">•</span><span class="li-text">Важно различать глобальное объяснение модели и локальное объяснение одного конкретного предсказания.</span></li><li><span class="li-num">•</span><span class="li-text">Простая модель иногда выгоднее сложной, если объяснение важнее точности.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="5">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 1</h2>
+        <p class="slide-lead">Внедряйте объяснение вместе с моделью, а не по требованию после инцидента.</p>
+      </section>
+      <section class="slide" data-slide="6">
+        <div class="slide-kicker">Блок 2</div>
+        <h2>Теория · Методы интерпретации моделей (SHAP, LIME) для топ-менеджмента</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">SHAP оценивает вклад каждого признака на основе теории кооперативных игр (значений Шепли) и даёт глобальное и локальное объяснение.</span></li><li><span class="li-num">•</span><span class="li-text">LIME аппроксимирует модель локально простой зависимостью вокруг конкретного случая.</span></li><li><span class="li-num">•</span><span class="li-text">Частичная зависимость (partial dependence) показывает, как меняется предсказание при изменении признака.</span></li><li><span class="li-num">•</span><span class="li-text">Объяснение должно быть проверено на устойчивость: несущественные изменения не должны менять вывод.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="7">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 2</h2>
+        <p class="slide-lead">Для каждой аудитории нужен свой уровень детализации.</p>
+      </section>
+      <section class="slide" data-slide="8">
+        <div class="slide-kicker">Блок 3</div>
+        <h2>Теория · Как аргументировать решения, принятые с участием ИИ, перед регуляторами и клиентами</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Для топ-менеджмента важны факторы влияния, направление влияния и сравнение с альтернативой.</span></li><li><span class="li-num">•</span><span class="li-text">Для регулятора нужны документация модели, журнал принятых решений и способность воспроизвести результат.</span></li><li><span class="li-num">•</span><span class="li-text">Для клиента достаточно понятной причины отказа или предложения без технических деталей.</span></li><li><span class="li-num">•</span><span class="li-text">Объяснимый ИИ (XAI) не оправдывает ошибку модели: он делает решение проверяемым.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="9">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 3</h2>
+        <p class="slide-lead">Объяснение экономит время споров больше, чем небольшой прирост точности.</p>
+      </section>
+      <section class="slide" data-slide="10">
+        <div class="slide-kicker">Разбор кейса</div>
+        <h2>Кейс: обоснование отказа в кредите</h2>
+        <ul class="slide-list"><li><span class="li-num">01</span><span class="li-text">Получить локальное объяснение конкретного решения с помощью SHAP.</span></li><li><span class="li-num">02</span><span class="li-text">Перевести вклад признаков в понятные бизнес-причины.</span></li><li><span class="li-num">03</span><span class="li-text">Подготовить ответ клиенту и запись для регулятора.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="11">
+        <div class="slide-kicker">Что чаще всего идёт не так</div>
+        <h2>Типичные ошибки и риски</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Формальная визуализация SHAP без содержательной интерпретации.</span></li><li><span class="li-num">•</span><span class="li-text">Разные объяснения для одной и той же версии модели.</span></li><li><span class="li-num">•</span><span class="li-text">Отсутствие журнала принятых решений.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="12">
+        <div class="slide-kicker">Как измерить эффект</div>
+        <h2>Метрики и критерии оценки</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Доля решений с объяснением</span></li><li><span class="li-num">•</span><span class="li-text">Время разбора инцидента</span></li><li><span class="li-num">•</span><span class="li-text">Удовлетворённость пользователей объяснением</span></li></ul>
+      </section>
+      <section class="slide" data-slide="13">
+        <div class="slide-kicker">Практический инструментарий</div>
+        <h2>Инструменты и стек</h2>
+        <div class="slide-bottom"><div class="chips"><span class="chip">SHAP</span><span class="chip">LIME</span><span class="chip">Карточки моделей (model cards)</span><span class="chip">Журналы принятых решений (decision logs)</span></div></div>
+      </section>
+      <section class="slide" data-slide="14">
+        <div class="slide-kicker">Три главных вывода</div>
+        <h2>Итоги лекции</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Внедряйте объяснение вместе с моделью, а не по требованию после инцидента.</span></li><li><span class="li-num">•</span><span class="li-text">Для каждой аудитории нужен свой уровень детализации.</span></li><li><span class="li-num">•</span><span class="li-text">Объяснение экономит время споров больше, чем небольшой прирост точности.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="15">
+        <div class="slide-kicker">Для обсуждения и самостоятельного изучения</div>
+        <h2>Вопросы и источники</h2>
+        <div class="question"><b>Для обсуждения</b><p>Кому в вашей компании нужно объяснение модели в первую очередь — клиенту, менеджеру или регулятору?</p></div>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Lundberg S., Lee S. A Unified Approach to Interpreting Model Predictions</span></li><li><span class="li-num">•</span><span class="li-text">Ribeiro M. et al. Why Should I Trust You?</span></li></ul>
+      </section>
+    </div>
+    <div class="controls">
+      <button class="btn" type="button" data-prev><span aria-hidden="true">←</span> <span class="label">Назад</span></button>
+      <div class="dots" data-dots></div>
+      <span class="counter" data-counter>01 / 15</span>
+      <button class="btn primary" type="button" data-next><span class="label">Далее</span> <span aria-hidden="true">→</span></button>
+    </div>
+    <p class="hint">Листайте стрелками ← → или пробелом · печать выведет все слайды</p>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Искусственный интеллект в профессиональной деятельности</span>
+    </div>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Тонкая настройка (Fine-Tuning) и суверенные модели — Искусственный интеллект в профессиональной деятельности">
+  <title>Лекция 11. Тонкая настройка (Fine-Tuning) и суверенные модели</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="site-bg"></div>
+  <main class="deck" style="--accent: #ffb454;">
+    <a class="back-link" href="../index.html#module-3">← К программе курса</a>
+    <div class="deck-head">
+      <div class="chips"><span class="chip">Модуль 3</span><span class="chip">Лекция 11</span></div>
+      <h1>Тонкая настройка (Fine-Tuning) и суверенные модели</h1>
+      <p class="sub">Искусственный интеллект в профессиональной деятельности</p>
+    </div>
+    <div class="progress"><span class="progress-bar"></span></div>
+    <div class="deck-slides">
+      <section class="slide active" data-slide="1">
+        <div class="slide-kicker"></div>
+        <div class="big-number">11</div>
+        <h2>Тонкая настройка (Fine-Tuning) и суверенные модели</h2>
+        <p class="slide-lead">Лекция 11 · Модуль 3 · Искусственный интеллект в профессиональной деятельности</p>
+        <p class="cover-author">Салина Анна гр. МЭЭ2501</p>
+      </section>
+      <section class="slide" data-slide="2">
+        <div class="slide-kicker">После лекции вы сможете</div>
+        <h2>Цели и результаты лекции</h2>
+        <p class="slide-lead">Разобрать критерии выбора между тонкой настройкой (Fine-Tuning), RAG и построением запросов, а также вопросы безопасности LLM.</p>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Понимать, когда нужна тонкая настройка (Fine-Tuning)</span></li><li><span class="li-num">•</span><span class="li-text">Сравнивать открытые и закрытые модели</span></li><li><span class="li-num">•</span><span class="li-text">Описывать контур безопасности LLM</span></li></ul>
+      </section>
+      <section class="slide" data-slide="3">
+        <div class="slide-kicker">Контекст</div>
+        <h2>Почему тема важна</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">После освоения промптов и RAG возникает вопрос: стоит ли обучать собственную модель? Ответ зависит от задачи, данных и требований к технологическому суверенитету (контролю над данными и инфраструктурой).</span></li><li><span class="li-num">•</span><span class="li-text">Как указано в лекции 10, тонкая настройка (Fine-Tuning) меняет поведение модели, но не является надёжным способом «загрузить» в неё актуальные факты.</span></li><li><span class="li-num">•</span><span class="li-text">Безопасность LLM — это не только защита от взлома, но и контроль утечек данных и качества выходных результатов.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="4">
+        <div class="slide-kicker">Блок 1</div>
+        <h2>Теория · Когда бизнесу нужна тонкая настройка (Fine-Tuning), а когда достаточно RAG и запросов</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Тонкая настройка (Fine-Tuning) полезна, когда нужно стабильное поведение, стиль или формат на большом числе примеров.</span></li><li><span class="li-num">•</span><span class="li-text">RAG предпочтительнее при часто меняющихся знаниях и требовании ссылаться на источник.</span></li><li><span class="li-num">•</span><span class="li-text">Построения запросов (промптинга) достаточно для простых задач и быстрых экспериментов.</span></li><li><span class="li-num">•</span><span class="li-text">Решение зависит от трёх вопросов: меняются ли знания, нужен ли особый стиль и есть ли размеченные примеры.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="5">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 1</h2>
+        <p class="slide-lead">Сначала RAG и промпты, потом Fine-Tuning — по этапам и с учётом бюджета.</p>
+      </section>
+      <section class="slide" data-slide="6">
+        <div class="slide-kicker">Блок 2</div>
+        <h2>Теория · Обзор открытых (open-source) и проприетарных (proprietary) моделей</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Открытые модели можно разместить внутри корпоративной инфраструктуры и адаптировать; важно соблюдать лицензионные условия и учитывать ресурсы.</span></li><li><span class="li-num">•</span><span class="li-text">Закрытые API дают качество и простоту, но данные уходят к провайдеру, а расходы зависят от тарифов.</span></li><li><span class="li-num">•</span><span class="li-text">Суверенные модели имеет смысл выбирать при требованиях к локализации и защите данных.</span></li><li><span class="li-num">•</span><span class="li-text">Гибрид: наиболее чувствительные данные обрабатываются локально, рутинные задачи — через внешний API.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="7">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 2</h2>
+        <p class="slide-lead">При выборе модели сравнивайте не только качество, но и стоимость владения.</p>
+      </section>
+      <section class="slide" data-slide="8">
+        <div class="slide-kicker">Блок 3</div>
+        <h2>Теория · Вопросы безопасности при интеграции LLM в контур предприятия</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Угрозы: передача конфиденциальных данных в запросе, внедрение вредоносных инструкций (prompt injection), уверенно ошибочные ответы (галлюцинации) и злоупотребление инструментами агента.</span></li><li><span class="li-num">•</span><span class="li-text">Контроль: фильтрация входных и выходных данных, ограничение прав инструментов и журналирование вызовов.</span></li><li><span class="li-num">•</span><span class="li-text">Для корпоративного контура важны изоляция, шифрование и политика сроков хранения запросов.</span></li><li><span class="li-num">•</span><span class="li-text">Человеческий контроль остаётся обязательным для решений с юридическими последствиями.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="9">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 3</h2>
+        <p class="slide-lead">Безопасность проектируется вместе с архитектурой, а не после инцидента.</p>
+      </section>
+      <section class="slide" data-slide="10">
+        <div class="slide-kicker">Разбор кейса</div>
+        <h2>Кейс: выбор архитектуры для внутреннего ассистента</h2>
+        <ul class="slide-list"><li><span class="li-num">01</span><span class="li-text">Определить чувствительность данных и требования локализации.</span></li><li><span class="li-num">02</span><span class="li-text">Сравнить сценарии: запросы и RAG, локальная модель, тонкая настройка (Fine-Tuning).</span></li><li><span class="li-num">03</span><span class="li-text">Выбрать гибрид и зафиксировать ограничения прав агента.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="11">
+        <div class="slide-kicker">Что чаще всего идёт не так</div>
+        <h2>Типичные ошибки и риски</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Fine-Tuning ради «собственной модели» без задачи и данных.</span></li><li><span class="li-num">•</span><span class="li-text">Передача конфиденциальных документов во внешний API без согласованной политики.</span></li><li><span class="li-num">•</span><span class="li-text">Отсутствие журнала запросов и ответов.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="12">
+        <div class="slide-kicker">Как измерить эффект</div>
+        <h2>Метрики и критерии оценки</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Стоимость владения</span></li><li><span class="li-num">•</span><span class="li-text">Доля заблокированных опасных запросов</span></li><li><span class="li-num">•</span><span class="li-text">Точность на внутреннем тесте</span></li></ul>
+      </section>
+      <section class="slide" data-slide="13">
+        <div class="slide-kicker">Практический инструментарий</div>
+        <h2>Инструменты и стек</h2>
+        <div class="slide-bottom"><div class="chips"><span class="chip">Hugging Face</span><span class="chip">LoRA / QLoRA (методы низкоранговой адаптации)</span><span class="chip">Шлюз вызовов LLM (LLM gateway)</span><span class="chip">Защитные ограничения (guardrails) и фильтры</span></div></div>
+      </section>
+      <section class="slide" data-slide="14">
+        <div class="slide-kicker">Три главных вывода</div>
+        <h2>Итоги лекции</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Сначала RAG и промпты, потом Fine-Tuning — по этапам и с учётом бюджета.</span></li><li><span class="li-num">•</span><span class="li-text">При выборе модели сравнивайте не только качество, но и стоимость владения.</span></li><li><span class="li-num">•</span><span class="li-text">Безопасность проектируется вместе с архитектурой, а не после инцидента.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="15">
+        <div class="slide-kicker">Для обсуждения и самостоятельного изучения</div>
+        <h2>Вопросы и источники</h2>
+        <div class="question"><b>Для обсуждения</b><p>Какие данные вашей компании нельзя отправлять во внешнюю модель ни при каких условиях?</p></div>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Hugging Face: Fine-Tuning transformers</span></li><li><span class="li-num">•</span><span class="li-text">OWASP Top 10 for LLM Applications</span></li></ul>
+      </section>
+    </div>
+    <div class="controls">
+      <button class="btn" type="button" data-prev><span aria-hidden="true">←</span> <span class="label">Назад</span></button>
+      <div class="dots" data-dots></div>
+      <span class="counter" data-counter>01 / 15</span>
+      <button class="btn primary" type="button" data-next><span class="label">Далее</span> <span aria-hidden="true">→</span></button>
+    </div>
+    <p class="hint">Листайте стрелками ← → или пробелом · печать выведет все слайды</p>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Искусственный интеллект в профессиональной деятельности</span>
+    </div>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ИИ в управлении рисками и комплаенсе — Искусственный интеллект в профессиональной деятельности">
+  <title>Лекция 07. ИИ в управлении рисками и комплаенсе</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="site-bg"></div>
+  <main class="deck" style="--accent: #2ad6bd;">
+    <a class="back-link" href="../index.html#module-2">← К программе курса</a>
+    <div class="deck-head">
+      <div class="chips"><span class="chip">Модуль 2</span><span class="chip">Лекция 07</span></div>
+      <h1>ИИ в управлении рисками и комплаенсе</h1>
+      <p class="sub">Искусственный интеллект в профессиональной деятельности</p>
+    </div>
+    <div class="progress"><span class="progress-bar"></span></div>
+    <div class="deck-slides">
+      <section class="slide active" data-slide="1">
+        <div class="slide-kicker"></div>
+        <div class="big-number">07</div>
+        <h2>ИИ в управлении рисками и комплаенсе</h2>
+        <p class="slide-lead">Лекция 07 · Модуль 2 · Искусственный интеллект в профессиональной деятельности</p>
+        <p class="cover-author">Салина Анна гр. МЭЭ2501</p>
+      </section>
+      <section class="slide" data-slide="2">
+        <div class="slide-kicker">После лекции вы сможете</div>
+        <h2>Цели и результаты лекции</h2>
+        <p class="slide-lead">Рассмотреть применение ИИ в управлении рисками и комплаенсе на примере финансовых и операционных кейсов.</p>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Описывать кредитный скоринг и противодействие мошенничеству (антифрод)</span></li><li><span class="li-num">•</span><span class="li-text">Понимать обнаружение аномалий</span></li><li><span class="li-num">•</span><span class="li-text">Связывать прогнозное обслуживание (Predictive Maintenance) с рисками активов</span></li></ul>
+      </section>
+      <section class="slide" data-slide="3">
+        <div class="slide-kicker">Контекст</div>
+        <h2>Почему тема важна</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Риск-менеджмент — одна из немногих областей, где ошибка модели имеет прямую денежную и регуляторную цену.</span></li><li><span class="li-num">•</span><span class="li-text">Поэтому здесь важны не только метрики качества, но и объяснимость, журнал решений и контроль человека.</span></li><li><span class="li-num">•</span><span class="li-text">Бизнес-информатик обеспечивает связку между моделью, политикой риска и отчётностью перед регулятором.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="4">
+        <div class="slide-kicker">Блок 1</div>
+        <h2>Теория · Кредитный скоринг</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Кредитный скоринг оценивает вероятность дефолта (неисполнения обязательств) (неисполнения обязательств) на основе исторических данных заёмщиков.</span></li><li><span class="li-num">•</span><span class="li-text">Модель должна использовать только доступные на момент решения признаки и проходить проверку на дискриминацию.</span></li><li><span class="li-num">•</span><span class="li-text">Отказ в кредите требует причины: нужна интерпретация вклада признаков.</span></li><li><span class="li-num">•</span><span class="li-text">Регуляторные требования ограничивают использование данных и требуют документирования, поэтому важна версия модели.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="5">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 1</h2>
+        <p class="slide-lead">Любая модель скоринга должна предусматривать человеческий контроль (human-in-the-loop) для пограничных решений.</p>
+      </section>
+      <section class="slide" data-slide="6">
+        <div class="slide-kicker">Блок 2</div>
+        <h2>Теория · Противодействие мошенничеству (антифрод, Fraud Detection)</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Обнаружение мошенничества (Fraud Detection) ищет аномальные транзакции по сумме, географии, времени и поведению.</span></li><li><span class="li-num">•</span><span class="li-text">Классические методы: правила, статистические пороги, изолирующие леса (Isolation Forest) и графовые модели.</span></li><li><span class="li-num">•</span><span class="li-text">Высокая цена ложного срабатывания: блокировка честной операции хуже, чем пропуск части мошенничества.</span></li><li><span class="li-num">•</span><span class="li-text">Система должна учиться на новых схемах: нужна полуавтоматическая разметка инцидентов.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="7">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 2</h2>
+        <p class="slide-lead">Антифрод строится как конвейер правил и модели, а не только как ML.</p>
+      </section>
+      <section class="slide" data-slide="8">
+        <div class="slide-kicker">Блок 3</div>
+        <h2>Теория · Прогнозное обслуживание (Predictive Maintenance) материальных активов компании</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Прогнозное обслуживание (Predictive Maintenance) предсказывает отказ оборудования по телеметрии и истории ремонтов.</span></li><li><span class="li-num">•</span><span class="li-text">Модель снижает простои, но требует точной привязки датчиков к активам.</span></li><li><span class="li-num">•</span><span class="li-text">Оптимизация графика обслуживания — баланс между преждевременным ремонтом и аварией.</span></li><li><span class="li-num">•</span><span class="li-text">Эффект считается в единицах доступности оборудования и стоимости простоя.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="9">
+        <div class="slide-kicker">Для бизнес-информатика</div>
+        <h2>Вывод в практику · 3</h2>
+        <p class="slide-lead">Без точного реестра активов прогнозное обслуживание невозможно.</p>
+      </section>
+      <section class="slide" data-slide="10">
+        <div class="slide-kicker">Разбор кейса</div>
+        <h2>Кейс: противодействие мошенничеству (антифрод) в платёжной системе</h2>
+        <ul class="slide-list"><li><span class="li-num">01</span><span class="li-text">Собрать размеченные инциденты и описать типичные схемы.</span></li><li><span class="li-num">02</span><span class="li-text">Построить гибрид: правила на грубые случаи и модель на нестандартные.</span></li><li><span class="li-num">03</span><span class="li-text">Настроить порог с учётом стоимости блокировки и пропуска.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="11">
+        <div class="slide-kicker">Что чаще всего идёт не так</div>
+        <h2>Типичные ошибки и риски</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Обучение на устаревших схемах мошенничества.</span></li><li><span class="li-num">•</span><span class="li-text">Отсутствие объяснения причины отказа клиенту.</span></li><li><span class="li-num">•</span><span class="li-text">Игнорирование стоимости ложных срабатываний.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="12">
+        <div class="slide-kicker">Как измерить эффект</div>
+        <h2>Метрики и критерии оценки</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Точность / полнота (precision / recall) по случаям мошенничества</span></li><li><span class="li-num">•</span><span class="li-text">Сумма предотвращённых потерь</span></li><li><span class="li-num">•</span><span class="li-text">Доля ложных блокировок</span></li></ul>
+      </section>
+      <section class="slide" data-slide="13">
+        <div class="slide-kicker">Практический инструментарий</div>
+        <h2>Инструменты и стек</h2>
+        <div class="slide-bottom"><div class="chips"><span class="chip">scikit-learn</span><span class="chip">Графовый анализ (Graph analysis)</span><span class="chip">SHAP</span><span class="chip">Движок правил (Rules engine)</span></div></div>
+      </section>
+      <section class="slide" data-slide="14">
+        <div class="slide-kicker">Три главных вывода</div>
+        <h2>Итоги лекции</h2>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Любая модель скоринга должна предусматривать человеческий контроль (human-in-the-loop) для пограничных решений.</span></li><li><span class="li-num">•</span><span class="li-text">Антифрод строится как конвейер правил и модели, а не только как ML.</span></li><li><span class="li-num">•</span><span class="li-text">Без точного реестра активов прогнозное обслуживание невозможно.</span></li></ul>
+      </section>
+      <section class="slide" data-slide="15">
+        <div class="slide-kicker">Для обсуждения и самостоятельного изучения</div>
+        <h2>Вопросы и источники</h2>
+        <div class="question"><b>Для обсуждения</b><p>Какой уровень ложных срабатываний вы готовы допустить в критическом процессе и кто его утверждает?</p></div>
+        <ul class="slide-list"><li><span class="li-num">•</span><span class="li-text">Bolton R., Hand D. Statistical Fraud Detection</span></li><li><span class="li-num">•</span><span class="li-text">Basel Committee: principles for model risk management</span></li></ul>
+      </section>
+    </div>
+    <div class="controls">
+      <button class="btn" type="button" data-prev><span aria-hidden="true">←</span> <span class="label">Назад</span></button>
+      <div class="dots" data-dots></div>
+      <span class="counter" data-counter>01 / 15</span>
+      <button class="btn primary" type="button" data-next><span class="label">Далее</span> <span aria-hidden="true">→</span></button>
+    </div>
+    <p class="hint">Листайте стрелками ← → или пробелом · печать выведет все слайды</p>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Искусственный интеллект в профессиональной деятельности</span>
+    </div>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
