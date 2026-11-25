@@ -11,7 +11,7 @@ import re
 from pathlib import Path
 
 from generate_presentations import DETAILS
-from sources import SOURCE_URLS
+from sources import SOURCE_URLS, TEACHER_SOURCES
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / "data" / "plan-lectures.txt"
@@ -62,44 +62,34 @@ def teaser(bullets: list[str]) -> str:
     return base.strip().rstrip(".")
 
 
-def render_references(modules: list[dict]) -> str:
-    items = []
+def render_references() -> str:
+    entries: dict[str, tuple[str, str]] = {}
     missing = []
-    for module in modules:
-        for lecture in module["lectures"]:
-            number = lecture["number"]
-            refs = DETAILS.get(number, {}).get("refs", [])
-            links = []
-            for ref in refs:
-                url = SOURCE_URLS.get(ref)
-                if not url:
-                    missing.append((number, ref))
-                    continue
-                links.append(
-                    f'<li><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">{esc(ref)}</a></li>'
-                )
-            if not links:
+    for data in DETAILS.values():
+        for ref in data.get("refs", []):
+            url = SOURCE_URLS.get(ref)
+            if not url:
+                missing.append(ref)
                 continue
-            items.append(
-                f"""      <article class="reference-item">
-        <span class="reference-num">{number:02d}</span>
-        <div>
-          <h3>Лекция {number:02d}. {esc(lecture['title'])}</h3>
-          <ul>{''.join(links)}</ul>
-        </div>
-      </article>"""
-            )
+            entries.setdefault(url.rstrip("/").lower(), (ref, url))
     if missing:
-        detail = "; ".join(f"{n}: {ref}" for n, ref in missing)
-        raise RuntimeError(f"Не заданы ссылки на источники: {detail}")
+        raise RuntimeError("Не заданы ссылки на источники: " + "; ".join(missing))
+
+    for title, url in TEACHER_SOURCES:
+        entries.setdefault(url.rstrip("/").lower(), (title, url))
+
+    items = [
+        f'      <li><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">{esc(title)}</a></li>'
+        for title, url in sorted(entries.values(), key=lambda pair: pair[0].lower())
+    ]
     return f"""    <section class="references" id="literature">
       <div class="section-head">
         <h2>Литература и источники</h2>
       </div>
-      <p class="references-lead">Источники, использованные при подготовке материалов курса. Ссылки открываются в новой вкладке.</p>
-      <div class="reference-grid">
+      <p class="references-lead">Источники, использованные при подготовке курса, и материалы с сайта преподавателя. Ссылки открываются в новой вкладке.</p>
+      <ul class="reference-list">
 {chr(10).join(items)}
-      </div>
+      </ul>
     </section>"""
 
 
@@ -153,7 +143,7 @@ def render_index(modules: list[dict]) -> str:
       </div>
 {chr(10).join(blocks)}
     </section>
-{render_references(modules)}
+{render_references()}
   </main>
   <footer>
     <div class="wrap">
